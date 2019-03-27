@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 
 namespace ConsoleApplication1
 {
@@ -37,14 +38,29 @@ namespace ConsoleApplication1
                 return b;
             }
         }
-        static double xnplus1(double x, double c)
+        static double xnplus1(double x, double c, double e)
         {
-            return x - ((fx(x) * (x - c)) / (fx(x) - fx(c)));
+            if (Math.Abs(x - ((fx(x) * (x - c)) / (fx(x) - fx(c))) - x) > e)
+            {
+                return x - ((fx(x) * (x - c)) / (fx(x) - fx(c)));
+                x = x - ((fx(x) * (x - c)) / (fx(x) - fx(c)));
+                xnplus1(x, c, e);
+            }
+            else return x;
         }
-
         static void Main(string[] args)
         {
-
+            StreamReader fin = new StreamReader("Inlet.in");
+            StreamWriter fout = new StreamWriter("Outlet.out");
+            string[] input = fin.ReadLine().Split(' ');
+            double a = Convert.ToDouble(input[0]);
+            double b = Convert.ToDouble(input[1]);
+            double e = Convert.ToDouble(input[2]);
+            double x = xnull(a, b);
+            double c = cstart(a, b);
+            double ans = xnplus1(x, c, e);
+            fout.WriteLine(ans);
+            fout.Close();
         }
     }
 }
