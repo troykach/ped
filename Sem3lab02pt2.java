@@ -50,8 +50,7 @@ public class Sem1lab02pt2
         try(  FileWriter A = new FileWriter("File2pt2.html", false)) 
         {
             String newLine = System.getProperty("line.separator");
-            //A.write("<html>"+newLine+"<head>"+newLine+"</head>"+newLine+"<body background='https://sun9-62.userapi.com/c855128/v855128266/103fbc/NAmB6YqPeV4.jpg'>");
-            A.write("<html>"+newLine+"<head>"+newLine+"</head>"+newLine+"<body>"+newLine+"<p>Исходный массив</p>"+newLine);
+            A.write("<html>"+newLine+"<head>"+newLine+"</head>"+newLine+"<body background='https://sun9-62.userapi.com/c855128/v855128266/103fbc/NAmB6YqPeV4.jpg'>"+newLine+"<p>Исходный массив</p>"+newLine);
             for (int i=0;i<n_int;i++)
             {
                 A.write("<p>");
